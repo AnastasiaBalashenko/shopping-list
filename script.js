@@ -10,7 +10,7 @@
 
 
 const sendInput = document.querySelector('#input');
-const groceriesContainer = document.querySelector('.groceries');
+const groceriesContainer = document.querySelector('.items');
 
 
 sendInput.addEventListener('keydown', function(event) {
@@ -18,8 +18,11 @@ sendInput.addEventListener('keydown', function(event) {
         const groceriesText = sendInput.value;
 
         const newGrocery = document.createElement('li');
-        newGrocery.classList.add('groceries');
+        newGrocery.classList.add('items');
         newGrocery.textContent = groceriesText;
+        newGrocery.addEventListener('click', function() {
+            newGrocery.classList.toggle('done');
+        });
 
         if (groceriesText != '') {
             groceriesContainer.append(newGrocery);
@@ -27,13 +30,6 @@ sendInput.addEventListener('keydown', function(event) {
 
         sendInput.value = '';
 
-    }
-
-    const element = document.querySelectorAll('li');
-    for (let item of element) {
-        item.addEventListener('click', function() {
-            item.classList.toggle('done');
-        });
     }
 
 });
